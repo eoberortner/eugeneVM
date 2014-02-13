@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>EugeneVM</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="shortcut icon" href="images/icon.ico">
+        <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link rel="stylesheet" href="css/codemirror.css">
+        <link rel="stylesheet" href="css/neat.css">
+    </head>
+    
+    <body>
+        <div class="navbar navbar-fixed-top navbar-inverse">
+            <div class="navbar-inner"> 
+                <ul class="nav">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="active"><a href="tryit.html">Try It!</a></li>
+					<!--  MIGHT COME LATER
+                    <li><a href="downloads.html">Downloads</a></li>
+                    <li><a href="forum.html">Q&amp;A Forum</a></li> 
+                    -->
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="page-header" style="margin-top:50px">
+            <h1>EugeneVM <small>A Virtual Machine for Eugene</small></h1>
+        </div>
+        
+        <div class="row-fluid">
+
+	        <div class="span1"></div>
+	
+	        <div class="span4">
+	            <div class="tabbable">
+	                <div id="dataTableContent" class="tab-content">
+	                    <div class="tab-pane active" id="textEditorTab">
+	
+							<!--  textarea for input -->
+							<div id="editorArea" class="collapse in">
+				            	<textarea id="textEditor">demo(n)
+{
+    return n;
+}</textarea>
+				            </div>
+				
+							<!-- Run button -->
+							<div id="buttonArea" class="collapse in">
+				            	<ul id="dataTableHeader" class="nav nav-pills center">
+			                        <li class="pull-left">
+				                        Parameter Value: <input type="text" id="parameter"></input>
+			                        </li>
+					     			<li class="pull-right">
+					            		<button style="width:150px" id="runButton" class="btn btn-danger">Run</button>
+					            	</li>
+				            	</ul>
+				            </div>
+				                            
+				                                
+				            <!-- OUTPUT -->
+				            <h5>Console</h5>
+				            <div id="outputArea">
+							    <div id="consoleArea"></div>
+				            </div>
+						</div>
+					</div>
+				</div>
+	        </div>
+	        
+	        <div class="span1"></div>
+        
+	        <div class="span4">
+	            <div id="description">
+					<pre>
+Program    = Function
+Function   = identifier "(" identifier ")" Block
+Block      = "{" [Statements] "}"
+Statements = Statement Statements
+Statement  = identifier "=" Expression ";" |
+             "if" Condition Statement "else" Statement |
+             "while" Condition Statement |
+             "return" Expression ";" |
+             Block |
+             ";"
+Condition  = "(" Expression ("=="|"!="|"&gt;"|"&lt;") Expression ")"
+Expression = Term {("+"|"-") Term}
+Term       = Factor {("*"|"/") Factor}
+Factor     = number |
+             identifier |
+             "(" Expression ")" |
+             identifier "(" Expression ")" 
+					</pre>
+				</div>
+			</div>
+		</div>
+
+
+        <div class="row-fluid"></div>
+
+		<!--  Footer (BU + License)
+		<div class="footer row text-center">
+	        CIDAR Group, Dept. of Electrical and Computer Engineering, Boston University, 2014
+	        <!--  Licencse --
+			<br/>
+	        <a rel="license" href="http://creativecommons.org/licenses/by/4.0/deed.en_US">
+        		<img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/4.0/88x31.png" />
+	        </a>
+	        <br/>
+	        This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/deed.en_US">Creative Commons Attribution 4.0 International License</a>.
+		</div>
+ 		-->
+<!--  
+        <script src="jsLibraries/jquery.dataTables.min.js"></script>
+        <script src="jsLibraries/bootstrap.min.js"></script>
+        <script src="javascript/ObjectIDGenerator.js"></script>
+ -->        
+ 		<script src="scripts/jquery-1.9.1.min.js"></script>
+        <script src="scripts/jquery-ui.min.js"></script>
+        <script src="scripts/controller.js"></script>
+        <script src="scripts/codemirror.js"></script>
+        <script src="scripts/eugene.js"></script>
+
+        <div id="tester"></div>
+    </body>
+</html>

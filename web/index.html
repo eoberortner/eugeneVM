@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>EugeneVM</title>
+        
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <!--  STYLESHEETS -->
+        <link rel="shortcut icon" href="images/icon.ico">
+        <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+		<style>
+			.text-justify {
+  				text-align: justify;
+			}
+		</style>
+    </head>
+    <body>
+    	<!--  TOP NAVIGATION BAR -->
+        <div class="navbar navbar-fixed-top navbar-inverse">
+            <div class="navbar-inner"> 
+                <ul class="nav">
+                    <li class="active"><a href="index.html">Home</a></li>
+                    <li><a href="tryit.html">Try It!</a></li>
+					<!--  MIGHT COME LATER
+                    <li><a href="downloads.html">Downloads</a></li>
+                    <li><a href="forum.html">Q&amp;A Forum</a></li> 
+                    -->
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="page-header" style="margin-top:50px">
+            <h1>EugeneVM <small>A Virtual Machine for Eugene</small></h1>
+        </div>
+        
+            <div class="span2">
+            </div>
+
+<div class="row">
+        <div class="span6">
+            <div class="row-fluid">
+                <div id="description" class="text-justify">
+<p>
+<b>Functional Eugene</b> is a purely functional language (declarative programming paradigm)  
+and its syntax is a modified subset of the C syntax. For the time being, a functional Eugene 
+program consists of a single (possibly recursive) function. The language has no declarations 
+(the implicit type is integer).
+<p>
+Functional Eugene a compiler-interpreter written in Java. The one-pass compiler is implemented 
+by a top-down recursive descent parser calling the methods of lexical analysis and code generation. 
+The parser routines correspond to the grammar rules (to the right) in EBNF notation. 
+The regular right parts of EBNF are suitable to postfix generation.
+Lexical analysis takes advantage of the Java <code>StreamTokenizer</code> class.
+<p> 
+The compiler generates code for MiniVM, which is a modified subset of the Java VM 
+(integer code instead of byte code).
+<p>
+
+				</div>
+			</div>
+		</div>
+		
+		<div class="span2">
+            <div class="row-fluid">
+			</div>
+		</div>
+		
+        <div class="span7">
+            <div class="row-fluid">
+                <div id="description">
+<pre>
+Program    = Function
+Function   = identifier "(" identifier ")" Block
+Block      = "{" [Statements] "}"
+Statements = Statement Statements
+Statement  = identifier "=" Expression ";" |
+             "if" Condition Statement "else" Statement |
+             "while" Condition Statement |
+             "return" Expression ";" |
+             Block |
+             ";"
+Condition  = "(" Expression ("=="|"!="|">"|"<") Expression ")"
+Expression = Term {("+"|"-") Term}
+Term       = Factor {("*"|"/") Factor}
+Factor     = number |
+             identifier |
+             "(" Expression ")" |
+             identifier "(" Expression ")" 
+</pre>
+				</div>
+			</div>
+		</div>
+</div>
+	
+ 		<!--  Footer (BU + License) -->
+		<div class="footer row text-center">
+	        CIDAR Group, Dept. of Electrical and Computer Engineering, Boston University, 2014
+			<br/>
+	        <!--  Licencse
+			<br/>
+	        <a rel="license" href="http://creativecommons.org/licenses/by/4.0/deed.en_US">
+        		<img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/4.0/88x31.png" />
+	        </a>
+	        <br/>
+	        This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/deed.en_US">Creative Commons Attribution 4.0 International License</a>.
+	         -->
+		</div>
+
+	
+        <script src="scripts/jquery-1.9.1.min.js"></script>
+        <script src="scripts/jquery-ui.min.js"></script>
+
+    </body>
+</html>
